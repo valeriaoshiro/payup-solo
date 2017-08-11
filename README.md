@@ -1,6 +1,6 @@
 # **PayUp**
 Keep track of who owes you money and send them friendly reminders through SMS
-
+.
 Screenshot 
 
 # **Technologies Used**
