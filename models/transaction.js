@@ -7,15 +7,16 @@ var paymentsSchema = new mongoose.Schema({
     timestamps: true
 });
 
-var transcationSchema = new mongoose.Schema({
+var transactionSchema = new mongoose.Schema({
+    date: String,
     name: String,
     description: String,
     amount: Number,
     phone: String,
     // image:
     payments: [paymentsSchema]
-},{
+}, {
     timestamps: true
 });
 
-module.exports = mongoose.model('Transcation', transactionSchema);
+module.exports = mongoose.model('Transaction', transactionSchema);
