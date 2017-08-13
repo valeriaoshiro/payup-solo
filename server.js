@@ -13,8 +13,6 @@ require('./config/database');
 require('./config/passport');
 
 var index = require('./routes/index');
-// var about = require('./routes/about');
-// var contact = require('./routes/contact');
 var users = require('./routes/users');
 var transactions = require('./routes/transactions');
 

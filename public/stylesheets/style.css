@@ -1,11 +1,13 @@
 body {
-  padding: 80px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 60px;
 }
 
 h1 {
+  padding: 30px;
   text-align: center;
-  font-size: 55px;
+  font-size: 40px;
+  font-family: 'Exo', sans-serif;
+
 }
 
 p {
@@ -55,18 +57,18 @@ footer.navbar-fixed-bottom {
   text-align: center;
   padding: 1.5rem;
   background-color: lightgrey;
-  height: 30px;
+  
 }
 
 .container-fluid {
   color: black;
 }
 
-img.process {
-  height: 650px;
+img.homepage {
+  height: 515px;
   position: relative;
-  top: 30px;
-  left: 250px;
+  top: 20px;
+  left: 325px;
   margin-bottom: 100px;
 
 }
