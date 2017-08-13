@@ -40,8 +40,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/', index);
-// app.use('/about', about);
-// app.use('/contact', contact);
+app.use('/about', index);
+app.use('/contact', index);
 app.use('/users', users);
 app.use('/transactions', transactions);
 

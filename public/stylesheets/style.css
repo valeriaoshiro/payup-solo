@@ -7,12 +7,22 @@ h1 {
   text-align: center;
   font-size: 40px;
   font-family: 'Exo', sans-serif;
-
+  line-height: 130%;
 }
 
-p {
+h2, h3 {
+  font-family: 'Exo', sans-serif;
+  padding: 30px;
   text-align: center;
+  font-size: 45px;
 }
+
+h4 {
+  text-align: center;
+  font-family: 'Exo', sans-serif;
+  color: green;
+}
+
 
 .navbar {
   height: 10px;
@@ -65,10 +75,20 @@ footer.navbar-fixed-bottom {
 }
 
 img.homepage {
-  height: 515px;
+  height: 500px;
   position: relative;
-  top: 20px;
-  left: 325px;
-  margin-bottom: 100px;
+  top: 15px;
+  left: 335px;
+  margin-bottom: 80px;
 
+}
+
+.form-area {
+  background-color: #FAFAFA;
+	padding: 10px 40px 60px;
+	margin: 10px 0px 60px;
+	border: 1px solid lightskyblue;
+  position: relative;
+  top: -20px;
+  left: 330px;
 }
