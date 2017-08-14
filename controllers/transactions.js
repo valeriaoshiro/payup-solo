@@ -17,7 +17,7 @@ function create(req, res) {
       {date: req.body.date, name: req.body.name, description: req.body.description, amount: Number(req.body.amount), phone: req.body.phone, user: user._id}
     )
     transaction.save(function(err) {
-      res.render('./users/show', {user: req.user.id, userDetail: user});
+      res.redirect(`/users/${ req.user.id }`);
     });
   });
 }
@@ -25,4 +25,3 @@ function create(req, res) {
 function del(req, res) {
 
 }
-//5991f1604120b62649ff9379
