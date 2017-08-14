@@ -9,12 +9,17 @@ module.exports = {
 };
 
 function index (req, res) {
-  
+  User.find({}, function(err, users){
+    console.log(req.user.id);
+    res.render('./users/index', {users: users, user: req.user.id})
+  });  
 }
 
 function show (req, res) {
-  User.findById(req.user.id, function (err, user) {
-    res.render('users/show', {user: user});
+  User.findById(req.params.id, function (err, user) {
+    console.log(user)
+    // res.send("Test");
+    res.render('./users/show', {user: req.user.id, userDetail: user});
   });
 }
 
