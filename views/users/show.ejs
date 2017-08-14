@@ -6,22 +6,35 @@
 <br>
 <br>
 <br>
+<div>
+  <$ if (userDetail.avatar) { $>
+    <img src="<$= userDetail.avatar $>" alt="" class="circle responsive-img">
+  <$ } else { $>
+    <i class="small material-icons">perm_identity</i>
+    <$ } $>
+</div>
 
-
+<a class="trans-links" href="/transactions/new">Add Transaction</a>
+<br>
 <$= userDetail.name $>
 <$= userDetail.email $><br>
-<p>Total Balance:</p>
+<$ var sumAmount = 0 $> 
+<$= transactions.forEach(function(transaction){
+  sumAmount += transaction.amount;
+})$>
+<p>Total Balance: <$= sumAmount $></p>
+
 <$ transactions.forEach(function(transaction){ $>
   <$= transaction.date $>
   <$= transaction.name $>
   <$= transaction.description $>
   <$= transaction.amount $>
   <$= transaction.phone $>
-  <a class="trans-links" href="/transactions/<$= transaction.id $>">View</a>
-  <a class="trans-links" href="/transactions/<$= transaction.id $>/edit">Edit</a>
+  <a class="trans-links btn btn-default" href="/transactions/<$= transaction.id $>">View</a>
+  <a class="trans-links btn btn-default" href="/transactions/<$= transaction.id $>/edit">Edit</a>
   <form method="POST" action="/transactions/<$= transaction.id $>?_method=DELETE">
     <input type="hidden" name="_method" value="delete"/>
-    <input class="delete" type="submit" name="transactionId" value="delete">
+    <input class="delete btn btn-default" type="submit" name="transactionId" value="delete">
   </form>
   <a class="trans-links" href="#">Send SMS</a>
   <br>
