@@ -76,11 +76,11 @@ footer.navbar-fixed-bottom {
 
 img.homepage {
   height: 500px;
-  position: relative;
+  /*position: relative;
   top: 15px;
-  left: 335px;
-  margin-bottom: 80px;
-
+  left: 335px;*/
+  /*margin-bottom: 80px;*/
+  margin: 0 auto;
 }
 
 .form-area {
