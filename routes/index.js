@@ -7,6 +7,15 @@ router.get('/', function(req, res) {
   res.render('index', { user: req.user });
 });
 
+router.get('/about', function(req, res) {
+  res.render('about', { user: req.user });
+});
+
+router.get('/contact', function(req, res) {
+  res.render('contact', { user: req.user });
+});
+
+
 router.get('/auth/google', passport.authenticate(
   'google',
   { scope: ['profile', 'email'] }
@@ -15,7 +24,7 @@ router.get('/auth/google', passport.authenticate(
 router.get('/oauth2callback', passport.authenticate(
   'google',
   {
-     successRedirect : '/',
+     successRedirect : 'users',
      failureRedirect : '/'
   }
 ));

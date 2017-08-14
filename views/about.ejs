@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <title>Pay Up</title>
+  
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+      <link href="https://fonts.googleapis.com/css?family=Exo:400,500,700,900" rel="stylesheet">
+      <link rel='stylesheet' href='/stylesheets/style.css' />
+
+  </head>
+  
+  <body>
+      
+    <nav class="navbar navbar-fixed-top">
+      <img class="logo" src="/images/transparent_payuplogo.png" alt="PayUp logo">
+
+        <ul class="nav navbar-nav navbar-right">
+          <a href="/">Home</a>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
+
+            <$ if (user) { $>
+              <a href="/logout"><i class="material-icons left"></i></i><img src="images/btn_google_signout_dark_focus_web.png" alt="oauth goole sign-out button"></a></a>
+              <$ } else { $>
+              <a href="/auth/google"><i class="material-icons left"></i><img src="images/btn_google_signin_dark_focus_web.png" alt="oauth goole sign-in button"></a>
+            <$ } $>
+        </ul>
+    </nav>
+    
+
+    <h2>About</h2>
+
+    <h4>Lending money is easy, keeping track is not.</h4>
+    <img class="homepage" src="images/about_temp.jpg" alt="about payup">
+
+    <footer class="navbar navbar-default navbar-fixed-bottom">
+      <div class="container-fluid">
+        © 2017 PayUp. All Rights Reserved. 
+      </div>
+    </footer>
+
+  </body>
+</html>
+
