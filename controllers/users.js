@@ -16,16 +16,23 @@ function index (req, res) {
 }
 
 function show (req, res) {
-  User.findById(req.params.id).populate('transactions').exec(function(err, user){
-    res.render('./users/show', {user: req.user.id, userDetail: user});
-
-  })
-
-  // User.findById(req.params.id, function (err, user) {
-  //   console.log(user)
-  //   // res.send("Test");
+  // User.findById(req.params.id).populate('transactions').exec(function(err, user){
   //   res.render('./users/show', {user: req.user.id, userDetail: user});
-  // });
+
+  // })
+
+  User.findById(req.params.id, function (err, user) {
+    // res.send("Test");
+    var arr = [];
+    Transaction.find({}, function(err, trans){
+      trans.forEach(function(tr){
+        console.log(tr.user);
+        if(tr.user == user.id) arr.push(tr);
+      });
+      console.log(arr);
+      res.render('./users/show', {user: req.user.id, userDetail: user, transactions: arr});
+    });
+  });
 }
 
 function edit (req, res) {

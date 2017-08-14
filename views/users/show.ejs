@@ -7,13 +7,19 @@
 <br>
 <br>
 <$= userDetail.name $>
-<$= userDetail.email $>
+<$= userDetail.email $><br>
+<$ transactions.forEach(function(transaction){ $>
+  <$= transaction.date $>
+  <$= transaction.name $>
+  <$= transaction.description $>
+  <$= transaction.amount $>
+  <$= transaction.phone $>
+  <br>
+<$ }) $>
 
-<$= userDetail $>
 
-<!--<$ userDetail.transactions.forEach(function(el){ $>
-  <a href="users/<$= el.id $>"><$= el.description $></a>
-<$ }) $>-->
+<!--<$= userDetail.transactions $>-->
+
 
 
 <$- include('./../_partials/footer') $>
