@@ -7,7 +7,7 @@ var userSchema = new mongoose.Schema({
     name: String,
     email: String,
     googleId: String,
-    transactions: [{type: ObjectId, ref: 'Transaction'}]
+    // transactions: [{type: ObjectId, ref: 'Transaction'}]
 },{
     timestamps: true
 });
