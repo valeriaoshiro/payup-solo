@@ -1,8 +1,94 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 60px;
 }
 
-a {
-  color: #00B7FF;
+h1 {
+  padding: 30px;
+  text-align: center;
+  font-size: 40px;
+  font-family: 'Exo', sans-serif;
+  line-height: 130%;
+}
+
+h2, h3 {
+  font-family: 'Exo', sans-serif;
+  padding: 30px;
+  text-align: center;
+  font-size: 45px;
+}
+
+h4 {
+  text-align: center;
+  font-family: 'Exo', sans-serif;
+  color: green;
+}
+
+
+.navbar {
+  height: 10px;
+}
+
+a:link {
+  color: #00a5c6;
+  padding: 7px;
+  position: relative;
+  top: 16px;
+  right: 45px;
+  font-size: 20px;
+  font-family: 'Exo', sans-serif;
+  text-decoration: none;
+}
+
+a:hover, a:active {
+    background-color: #CBF2FF;
+    color: green;
+    text-decoration: none;
+}
+
+nav.navbar-fixed-top {
+  height: 75px;
+  background-color: #E2F8FF;
+}
+
+img {
+  position: relative;
+  top: -3px;
+  left: 10px;
+}
+
+.logo {
+  position: relative;
+  top: 10px;
+  left: 33px;
+  height: 50px;
+}
+
+footer.navbar-fixed-bottom {
+  text-align: center;
+  padding: 1.5rem;
+  background-color: lightgrey;
+  
+}
+
+.container-fluid {
+  color: black;
+}
+
+img.homepage {
+  height: 500px;
+  position: relative;
+  top: 15px;
+  left: 335px;
+  margin-bottom: 80px;
+
+}
+
+.form-area {
+  background-color: #FAFAFA;
+	padding: 10px 40px 60px;
+	margin: 10px 0px 60px;
+	border: 1px solid lightskyblue;
+  position: relative;
+  top: -20px;
+  left: 330px;
 }
