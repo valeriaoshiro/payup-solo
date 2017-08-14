@@ -1,11 +1,13 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+var ObjectId = Schema.Types.ObjectId;
 
 
 var userSchema = new mongoose.Schema({
     name: String,
     email: String,
     googleId: String,
-    transactions: [{type:mongoose.Schema.Types.ObjectId, ref: 'Transaction'}]
+    transactions: [{type: ObjectId, ref: 'Transaction'}]
 },{
     timestamps: true
 });

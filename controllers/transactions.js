@@ -8,7 +8,7 @@ module.exports = {
 };
 
 function newTransaction(req, res) {
-  res.render('transactions/new', {transaction: {}});
+  res.render('transactions/new', {transaction: {}, user: req.user.id});
 }
 
 function create(req, res) {
@@ -16,9 +16,9 @@ function create(req, res) {
     var transaction = new Transaction (
       {date: req.body.date, name: req.body.name, description: req.body.description, amount: Number(req.body.amount), phone: req.body.phone}
     )
-    user.transactions.push(transaction._id);
-    user.save(function(err) {
-      res.redirect('/users');
+    transaction.save(function(err) {
+      user.transactions.push(transaction._id);
+      res.redirect('/users', {user: req.user.id, users: });
     });
   });
 }
