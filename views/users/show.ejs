@@ -6,14 +6,24 @@
 <br>
 <br>
 <br>
+<a class="trans-links" href="/transactions/new">Add Transaction</a>
+<br>
 <$= userDetail.name $>
 <$= userDetail.email $><br>
+<p>Total Balance:</p>
 <$ transactions.forEach(function(transaction){ $>
   <$= transaction.date $>
   <$= transaction.name $>
   <$= transaction.description $>
   <$= transaction.amount $>
   <$= transaction.phone $>
+  <a class="trans-links" href="/transactions/<$= transaction.id $>">View</a>
+  <a class="trans-links" href="/transactions/<$= transaction.id $>/edit">Edit</a>
+  <form method="POST" action="/transactions/<$= transaction.id $>?_method=DELETE">
+    <input type="hidden" name="_method" value="delete"/>
+    <input class="delete" type="submit" name="transactionId" value="delete">
+  </form>
+  <a class="trans-links" href="#">Send SMS</a>
   <br>
 <$ }) $>
 
