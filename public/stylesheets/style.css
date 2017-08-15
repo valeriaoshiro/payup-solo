@@ -28,7 +28,7 @@ h4 {
   height: 10px;
 }
 
-a:link {
+.navlinks {
   color: #00a5c6;
   padding: 7px;
   position: relative;
@@ -39,7 +39,7 @@ a:link {
   text-decoration: none;
 }
 
-a:hover, a:active {
+.navlinks:hover {
     color: green;
     text-decoration: none;
 }
@@ -57,7 +57,6 @@ img {
 
 .logo {
   position: relative;
-  top: -5px;
   left: 12px;
   height: 50px;
 }
@@ -90,28 +89,16 @@ img.homepage {
   left: 330px;
 }
 
-.trans-buttons {
- float: right;
-}
 
-.list-group-item {
- padding: 15px;
-  color: black;
-  float: left;
-}
-
-.btn-danger {
+/*.btn-danger {
   padding: 7px;
   margin-left: 10px;
-}
+}*/
 
 .add-trans {
   margin-left: 20px;
 }
 
-form {
-  margin-left: 40px;
-}
 
 
  
