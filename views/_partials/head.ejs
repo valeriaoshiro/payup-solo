@@ -13,17 +13,17 @@
     <body>
       
     <nav class="navbar navbar-fixed-top">
-      <a class="logo" href="/"><img class="logo" src="/images/transparent_payuplogo.png" alt="PayUp logo"></a>
+      <a class="logo navlinks" href="/"><img class="logo" src="/images/transparent_payuplogo.png" alt="PayUp logo"></a>
 
         <ul class="nav navbar-nav navbar-right">
-          <a href="/">Home</a>
-          <a href="/about">About</a>
-          <a href="/contact">Contact</a>
+          <a class="navlinks" href="/">Home</a>
+          <a class="navlinks" href="/about">About</a>
+          <a class="navlinks" href="/contact">Contact</a>
 
             <$ if (user) { $>
-              <a href="/logout"><i class="material-icons left"></i><img src="images/btn_google_signout_dark_focus_web.png" alt="oauth google sign-out button"></a>
+              <a class="navlinks" href="/logout"><i class="material-icons left"></i><img src="images/btn_google_signout_dark_focus_web.png" alt="oauth google sign-out button"></a>
               <$ } else { $>
-              <a href="/auth/google"><i class="material-icons left"></i><img src="images/btn_google_signin_dark_focus_web.png" alt="oauth google sign-in button"></a>
+              <a class="navlinks" href="/auth/google"><i class="material-icons left"></i><img src="images/btn_google_signin_dark_focus_web.png" alt="oauth google sign-in button"></a>
             <$ } $>
         </ul>
     </nav>
