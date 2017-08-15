@@ -17,7 +17,7 @@ function index (req, res) {
 function show (req, res) {
   User.findById(req.user.id, function (err, user) {
     var arr = [];
-    Transaction.find({}, function(err, trans){
+    Transaction.find({}).sort('date').exec(function(err, trans) {
       trans.forEach(function(tr){
         if(tr.user == user.id) arr.push(tr);
       });
