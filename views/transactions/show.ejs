@@ -5,6 +5,7 @@
 <br>
 <br>
 <br>
+
 <div class="container">
 
     <$ var sumAmount = 0 $> 
@@ -62,9 +63,11 @@
     <$ transaction.payments.forEach(function(payment){ $>
         <td><$= payment.date $></td>
         <td><$= payment.amount $></td>
+    </tr> 
     <$ }) $> 
-    </tr>
 </table>
+
+<br>
 
 </div>
 
