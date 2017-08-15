@@ -3,14 +3,14 @@ var Schema = mongoose.Schema;
 var ObjectId = Schema.Types.ObjectId;
 
 var paymentsSchema = new mongoose.Schema({
-    date: String,
+    date: Date,
     amount: Number    
 },{
     timestamps: true
 });
 
 var transactionSchema = new mongoose.Schema({
-    date: String,
+    date: Date,
     name: String,
     description: String,
     amount: Number,
