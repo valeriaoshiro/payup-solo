@@ -1,0 +1,38 @@
+<$- include('./../_partials/head') $>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="list-group">
+        <li class="list-group-item"><$= transaction.date $></li>
+        <li class="list-group-item"><$= transaction.name $></li>
+        <li class="list-group-item"><$= transaction.description $></li>
+        <li class="list-group-item"><$= transaction.amount $></li>
+        <li class="list-group-item"><$= transaction.phone $></li>
+</div>
+<br>
+<br>
+<br> 
+
+<$ var sumAmount = 0 $> 
+<$= transaction.payments.forEach(function(payment){
+  sumAmount += payment.amount;
+})$>
+<p>Remaining Balance Due: <$= transaction.amount - sumAmount $></p>
+
+<form action="/transactions/<$= transaction.id $>/payments" method="post">
+    <div class="form-group">
+        <label>Date</label>  
+        <input type="text" name="date"><br>
+        <br>
+        <label>Amount</label>
+        <input type="text" name="amount"><br>
+        <br>
+        <input type="hidden" name="_method" value="put"/>
+        <button type="submit" name="paymentId">Add Payment</button>
+    </div>
+</form>
+
+<$- include('./../_partials/footer') $> 
