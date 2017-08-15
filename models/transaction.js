@@ -14,6 +14,7 @@ var transactionSchema = new mongoose.Schema({
     name: String,
     description: String,
     amount: Number,
+    amountPaid: {type: Number, default: 0},
     phone: String,
     user: {type: ObjectId, ref: 'User'},
     // image:

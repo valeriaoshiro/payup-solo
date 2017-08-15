@@ -55,6 +55,7 @@ function show(req, res) {
 function createPayment(req, res) {
   Transaction.findById(req.params.id).populate('users').exec((err, transaction) => {
     transaction.payments.push({date: req.body.date, amount: req.body.amount});
+    transaction.amountPaid += Number(req.body.amount);
     transaction.save(err => {
       res.redirect(`/transactions/${transaction.id}`);
     });
