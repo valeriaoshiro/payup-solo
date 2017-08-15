@@ -40,7 +40,6 @@ a:link {
 }
 
 a:hover, a:active {
-    background-color: #CBF2FF;
     color: green;
     text-decoration: none;
 }
@@ -58,8 +57,8 @@ img {
 
 .logo {
   position: relative;
-  top: 10px;
-  left: 33px;
+  top: -5px;
+  left: 12px;
   height: 50px;
 }
 
@@ -84,15 +83,35 @@ img.homepage {
 }
 
 .form-area {
-  background-color: #FAFAFA;
 	padding: 10px 40px 60px;
-	margin: 10px 0px 60px;
-	border: 1px solid lightskyblue;
+	margin: 10px 0px 60px; 
   position: relative;
   top: -20px;
   left: 330px;
 }
 
-.trans-links {
-  text-align: right;
+.trans-buttons {
+ float: right;
 }
+
+.list-group-item {
+ padding: 15px;
+  color: black;
+  float: left;
+}
+
+.btn-danger {
+  padding: 7px;
+  margin-left: 10px;
+}
+
+.add-trans {
+  margin-left: 20px;
+}
+
+form {
+  margin-left: 40px;
+}
+
+
+ 

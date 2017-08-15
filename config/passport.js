@@ -16,7 +16,7 @@ User.findOne({ 'googleId': profile.id }, function(err, user) {
         var newUser = new User({
           name: profile.displayName,
           email: profile.emails[0].value,
-          avatar: profile.image.url,
+          avatar: profile.photos[0].value,
           googleId: profile.id
         });
         newUser.save(function(err) {
