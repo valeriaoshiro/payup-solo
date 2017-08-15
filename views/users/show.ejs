@@ -1,17 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
-  <h1>User: <$= user.name $></h1>
-  
-  <$ user.populate('transactions').forEach(function(transaction) { $>
-    <$= transaction $>
-    <$ }); $>
-  
-</body>
-</html>
+<$- include('./../_partials/head') $>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div>
+  <$ if (userDetail.avatar) { $>
+    <img src="<$= userDetail.avatar $>" alt="" class="circle responsive-img">
+  <$ } else { $>
+    <i class="small material-icons">perm_identity</i>
+    <$ } $>
+</div>
+
+<a class="trans-links" href="/transactions/new">Add Transaction</a>
+<br>
+<$= userDetail.name $>
+<$= userDetail.email $><br>
+<$ var sumAmount = 0 $> 
+<$= transactions.forEach(function(transaction){
+  sumAmount += transaction.amount;
+})$>
+<p>Total Balance: <$= sumAmount $></p>
+
+<$ transactions.forEach(function(transaction){ $>
+  <$= transaction.date $>
+  <$= transaction.name $>
+  <$= transaction.description $>
+  <$= transaction.amount $>
+  <$= transaction.phone $>
+  <a class="trans-links btn btn-default" href="/transactions/<$= transaction.id $>">View</a>
+  <a class="trans-links btn btn-default" href="/transactions/<$= transaction.id $>/edit">Edit</a>
+  <form method="POST" action="/transactions/<$= transaction.id $>?_method=DELETE">
+    <input type="hidden" name="_method" value="delete"/>
+    <input class="delete btn btn-default" type="submit" name="transactionId" value="delete">
+  </form>
+  <a class="trans-links" href="#">Send SMS</a>
+  <br>
+<$ }) $>
+
+
+<!--<$= userDetail.transactions $>-->
+
+
+
+<$- include('./../_partials/footer') $>

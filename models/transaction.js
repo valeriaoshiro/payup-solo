@@ -1,4 +1,6 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+var ObjectId = Schema.Types.ObjectId;
 
 var paymentsSchema = new mongoose.Schema({
     date: String,
@@ -13,6 +15,7 @@ var transactionSchema = new mongoose.Schema({
     description: String,
     amount: Number,
     phone: String,
+    user: {type: ObjectId, ref: 'User'},
     // image:
     payments: [paymentsSchema]
 }, {

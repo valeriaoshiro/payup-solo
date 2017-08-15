@@ -9,12 +9,20 @@ module.exports = {
 };
 
 function index (req, res) {
-  
+  User.find({}, function(err, users){
+    res.render('./users/index', {users: users, user: req.user.id})
+  });  
 }
 
 function show (req, res) {
-  User.findById(req.user.id, function (err, user) {
-    res.render('users/show', {user: user});
+  User.findById(req.params.id, function (err, user) {
+    var arr = [];
+    Transaction.find({}, function(err, trans){
+      trans.forEach(function(tr){
+        if(tr.user == user.id) arr.push(tr);
+      });
+      res.render('./users/show', {user: req.user.id, userDetail: user, transactions: arr});
+    });
   });
 }
 

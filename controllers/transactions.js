@@ -4,25 +4,41 @@ var User = require('../models/user');
 module.exports = {
   create: create,
   new: newTransaction,
+  edit: edit,
+  update: update,
   delete: del
 };
 
 function newTransaction(req, res) {
-  res.render('transactions/new', {transaction: {}});
+  res.render('./transactions/new', {transaction: {}, user: req.user.id});
 }
 
 function create(req, res) {
   User.findById(req.user.id, function(err, user) {
     var transaction = new Transaction (
-      {date: req.body.date, name: req.body.name, description: req.body.description, amount: Number(req.body.amount), phone: req.body.phone}
+      {date: req.body.date, name: req.body.name, description: req.body.description, amount: Number(req.body.amount), phone: req.body.phone, user: user._id}
     )
-    user.transactions.push(transaction._id);
-    user.save(function(err) {
-      res.redirect('/users');
+    transaction.save(function(err) {
+      res.redirect(`/users/${ req.user.id }`);
     });
   });
 }
 
-function del(req, res) {
+function edit(req, res) {
+  Transaction.findById(req.params.id, function(err, transaction) {
+    console.log(transaction);
+    res.render('./transactions/edit', {transaction: transaction, user:req.user.id});
+  });
+}
 
+function update(req, res) {
+  Transaction.findByIdAndUpdate(req.params.id, req.body, function(err, transaction) {
+    res.redirect(`/users/${ req.user.id }`);
+  });
+}
+
+function del(req, res) {
+  Transaction.findByIdAndRemove(req.params.id, function(err) {
+    res.redirect(`/users/${ req.user.id }`);
+  });
 }

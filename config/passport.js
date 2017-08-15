@@ -13,10 +13,10 @@ User.findOne({ 'googleId': profile.id }, function(err, user) {
       if (user) {
         return cb(null, user);
       } else {
-        // we have a new user via OAuth!
         var newUser = new User({
           name: profile.displayName,
           email: profile.emails[0].value,
+          avatar: profile.photos[0].value,
           googleId: profile.id
         });
         newUser.save(function(err) {
