@@ -19,7 +19,7 @@ function create(req, res) {
       {date: req.body.date, name: req.body.name, description: req.body.description, amount: Number(req.body.amount), phone: req.body.phone, user: user._id}
     )
     transaction.save(function(err) {
-      res.redirect(`/users/${ req.user.id }`);
+      res.redirect(`/users`);
     });
   });
 }
@@ -33,12 +33,12 @@ function edit(req, res) {
 
 function update(req, res) {
   Transaction.findByIdAndUpdate(req.params.id, req.body, function(err, transaction) {
-    res.redirect(`/users/${ req.user.id }`);
+    res.redirect(`/users`);
   });
 }
 
 function del(req, res) {
   Transaction.findByIdAndRemove(req.params.id, function(err) {
-    res.redirect(`/users/${ req.user.id }`);
+    res.redirect(`/users`);
   });
 }
