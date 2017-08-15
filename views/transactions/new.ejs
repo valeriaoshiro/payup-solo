@@ -5,9 +5,16 @@
 <h2 class="new-trans">New Transaction</h2>
  
   <form action="/transactions" method="post">
-    <label>Date:
-      <input type="text" name="date">
-    </label>
+  
+    <div class="input-group date" id="datetimepicker1">
+      <label>Date:
+        <input type="text" class="form-control" name="date">
+        <span class="input-group-addon">
+          <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+      </label>
+    </div>
+
     <label>Name:
       <input type="text" name="name">
     </label><br>
@@ -22,7 +29,14 @@
     </label><br><br>
 
     <input class="new-trans btn btn-default" type="submit" value="Add Transaction">
+
   </form>
+
+  <script type="text/javascript">
+    $(function() {
+      $('#datetimepicker1').datetimepicker();
+    });
+    </script>
 
 
 <$- include('./../_partials/footer') $>
