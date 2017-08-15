@@ -19,10 +19,12 @@
 <$= userDetail.name $><br>
 <$= userDetail.email $><br>
 <$ var sumAmount = 0 $> 
+<$ var sumAmountPaid = 0 $>
 <$= transactions.forEach(function(transaction){
   sumAmount += transaction.amount;
+  sumAmountPaid += transaction.amountPaid;
 })$>
-<div class="pull-right">Total Balance: <$= sumAmount $></div>
+<div class="pull-right">Total Balance: <$= sumAmount-sumAmountPaid $></div>
 <br>
 <br>
 
@@ -57,7 +59,7 @@
 
 </table>   
 
-  <a class="add-trans btn btn-primary" href="/transactions/new">Add Transaction</a>
+  <a class="add-trans btn btn-default" href="/transactions/new">Add Transaction</a>
       
 <br>
 <br>
