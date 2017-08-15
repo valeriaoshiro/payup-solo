@@ -1,7 +1,6 @@
 <$- include('./../_partials/head') $>
 
-<br>
-<br>
+
 <br>
 <br>
 <br>
@@ -14,8 +13,11 @@
     <$ } $>
 </div>
 
-<a class="trans-links" href="/transactions/new">Add Transaction</a>
+<a class="trans btn btn-primary" href="/transactions/new">Add Transaction</a>
 <br>
+<br>
+<br>
+
 <$= userDetail.name $>
 <$= userDetail.email $><br>
 <$ var sumAmount = 0 $> 
@@ -24,25 +26,32 @@
 })$>
 <p>Total Balance: <$= sumAmount $></p>
 
-<$ transactions.forEach(function(transaction){ $>
-  <$= transaction.date $>
-  <$= transaction.name $>
-  <$= transaction.description $>
-  <$= transaction.amount $>
-  <$= transaction.phone $>
-  <a class="trans-links btn btn-default" href="/transactions/<$= transaction.id $>">View</a>
-  <a class="trans-links btn btn-default" href="/transactions/<$= transaction.id $>/edit">Edit</a>
-  <form method="POST" action="/transactions/<$= transaction.id $>?_method=DELETE">
-    <input type="hidden" name="_method" value="delete"/>
-    <input class="delete btn btn-default" type="submit" name="transactionId" value="delete">
-  </form>
-  <a class="trans-links" href="#">Send SMS</a>
-  <br>
-<$ }) $>
+
+<div class="list-group">
+   <$ transactions.forEach(function(transaction){ $>
+      <li class="list-group-item"><$= transaction.date $></li>
+      <li class="list-group-item"><$= transaction.name $></li>
+      <li class="list-group-item"><$= transaction.description $></li>
+      <li class="list-group-item"><$= transaction.amount $></li>
+      <li class="list-group-item"><$= transaction.phone $></li>
+</div>   
+
+  <div class="trans-buttons">
+    <a class="btn btn-default" href="/transactions/<$= transaction.id $>">View</a>
+    <a class="btn btn-default" href="/transactions/<$= transaction.id $>/edit">Edit</a> 
+    <a class="btn btn-default" href="#">Send SMS</a>
+  </div>
+
+    <form method="POST" action="/transactions/<$= transaction.id $>?_method=DELETE">
+      <input class="btn btn-danger" type="hidden" name="_method" value="delete">
+      <input class="btn btn-danger" type="button" class="btn btn-default" type="submit" name="transactionId" value="Delete">
+    </form>
+      <br>
+  </div>     
+
+<$ }) $> 
+ 
 
 
 <!--<$= userDetail.transactions $>-->
-
-
-
 <$- include('./../_partials/footer') $>

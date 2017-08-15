@@ -40,7 +40,6 @@ a:link {
 }
 
 a:hover, a:active {
-    background-color: #CBF2FF;
     color: green;
     text-decoration: none;
 }
@@ -93,6 +92,22 @@ img.homepage {
   left: 330px;
 }
 
-.trans-links {
-  text-align: right;
+
+.trans-buttons {
+ float: right;
+}
+
+.list-group-item {
+ padding: 15px;
+  color: black;
+  float: left;
+}
+
+.btn-danger {
+  padding: 7px;
+  margin-left: 10px;
+}
+
+.trans {
+  margin-left: 20px;
 }
