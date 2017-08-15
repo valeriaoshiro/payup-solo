@@ -1,13 +1,8 @@
 <$- include('./../_partials/head') $>
 
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
 <h1>Edit Transaction</h1>
-<br>
+
 <form action="/transactions/<$= transaction.id $>?_method=PUT" method="POST">
     <label>Date</label>
     <input type="text" name="date" value="<$= transaction.date $>"><br>

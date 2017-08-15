@@ -1,6 +1,4 @@
 <$- include('./../_partials/head') $>
-
-
 <br>
 <br>
 <br>
@@ -13,7 +11,7 @@
     <$ } $>
 </div>
 
-<a class="trans btn btn-primary" href="/transactions/new">Add Transaction</a>
+<a class="add-trans btn btn-primary" href="/transactions/new">Add Transaction</a>
 <br>
 <br>
 <br>
@@ -28,12 +26,12 @@
 
 
 <div class="list-group">
-   <$ transactions.forEach(function(transaction){ $>
-      <li class="list-group-item"><$= transaction.date $></li>
-      <li class="list-group-item"><$= transaction.name $></li>
-      <li class="list-group-item"><$= transaction.description $></li>
-      <li class="list-group-item"><$= transaction.amount $></li>
-      <li class="list-group-item"><$= transaction.phone $></li>
+  <$ transactions.forEach(function(transaction){ $>
+    <li class="list-group-item"><$= transaction.date $></li>
+    <li class="list-group-item"><$= transaction.name $></li>
+    <li class="list-group-item"><$= transaction.description $></li>
+    <li class="list-group-item"><$= transaction.amount $></li>
+    <li class="list-group-item"><$= transaction.phone $></li>
 </div>   
 
   <div class="trans-buttons">
@@ -41,17 +39,19 @@
     <a class="btn btn-default" href="/transactions/<$= transaction.id $>/edit">Edit</a> 
     <a class="btn btn-default" href="#">Send SMS</a>
   </div>
+    
+
 
     <form method="POST" action="/transactions/<$= transaction.id $>?_method=DELETE">
-      <input class="btn btn-danger" type="hidden" name="_method" value="delete">
-      <input class="btn btn-danger" type="button" class="btn btn-default" type="submit" name="transactionId" value="Delete">
+      <input class="btn btn-danger" type="hidden" name="_method" value="delete"/>
+      <input class="btn btn-danger" type="submit" name="transactionId" value="Delete">
     </form>
-      <br>
   </div>     
-
+<br>
 <$ }) $> 
  
 
-
+<br>
+<br>
 <!--<$= userDetail.transactions $>-->
 <$- include('./../_partials/footer') $>
