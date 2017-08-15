@@ -15,7 +15,7 @@ function index (req, res) {
 }
 
 function show (req, res) {
-  User.findById(req.params.id, function (err, user) {
+  User.findById(req.user.id, function (err, user) {
     var arr = [];
     Transaction.find({}, function(err, trans){
       trans.forEach(function(tr){
