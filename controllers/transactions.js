@@ -19,8 +19,14 @@ function newTransaction(req, res) {
 
 function create(req, res) {
   User.findById(req.user.id, function(err, user) {
+    var newDate;
+    if(!req.body.date){
+      newDate = new Date();
+    } else {
+      newDate = new Date(req.body.date);
+    }
     var transaction = new Transaction (
-      {date: req.body.date, name: req.body.name, description: req.body.description, amount: Number(req.body.amount), phone: req.body.phone, user: user._id}
+      {date: newDate, name: req.body.name, description: req.body.description, amount: Number(req.body.amount), phone: req.body.phone, user: user._id}
     )
     transaction.save(function(err) {
       res.redirect(`/users`);
