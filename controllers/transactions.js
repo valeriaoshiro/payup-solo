@@ -1,7 +1,11 @@
 var Transaction = require('../models/transaction');
 var User = require('../models/user');
+var accountSid = process.env.TWILIO_ACCOUNT_SID;
+var authToken = process.env.TWILIO_AUTH_TOKEN;
+var client = require('twilio')(accountSid, authToken);
 
 module.exports = {
+  sendMessage: sendMessage,
   create: create,
   new: newTransaction,
   edit: edit,
@@ -12,6 +16,26 @@ module.exports = {
   editPayment: editPayment,
   updatePayment: updatePayment
 };
+
+function sendMessage(req, res) {
+  Transaction.findById(req.params.id).populate('users').exec((err, transaction) => {
+    var cleanPhone = transaction.phone.replace(/[^\d]*/gi, "");
+    // client.messages.create({
+    //   from: '+13238706472',
+    //   to: '+1' + cleanPhone,
+    //   body: 'This is a friendly reminder: YOU OWE MONIES TO ' + transaction.user.name,
+    //   mediaUrl: 'https://media.giphy.com/media/MbIYMkQhIGMc8/giphy.gif'
+    // }, function(err, message) {
+    //   if(err) {
+    //     console.error(err);
+    //   } else {
+    //     console.log(message.sid);
+    //     res.redirect(`/users`)
+    //   }
+    // }); 
+    console.log(transaction.user);
+  });
+}
 
 function newTransaction(req, res) {
   res.render('./transactions/new', {transaction: {}, user: req.user.id});
