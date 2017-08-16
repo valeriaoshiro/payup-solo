@@ -89,11 +89,10 @@ img.homepage {
   left: 330px;
 }
 
-
-/*.btn-danger {
-  padding: 7px;
-  margin-left: 10px;
-}*/
+img.google {
+  margin-right: 17px;
+  height: 40px;
+}
 
 .add-trans {
   margin-left: 20px;
