@@ -1,10 +1,10 @@
 var User = require('./../../models/user');
 
 module.exports = {
-    getAllUsersData
+    getAllUsers
 }
 
-function getAllUsersData(req, res){
+function getAllUsers(req, res){
     User.find({}, function(err, user){
         res.status(200).json(user);
     })
