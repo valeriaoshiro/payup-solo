@@ -1,92 +1,70 @@
 <$- include('./../_partials/head') $>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
 <div class="container">
-
-<button class="btn btn-default" type="button"><a href="/users">Back to All Transactions</a></button>
-
+	<h2></h2>
+  	<form class="col-xs-12" action="/users" method="get">
+    	<input class="new-trans btn btn-default" type="submit" value="Back to All Transactions"></input>
+		</form>
     <$ var sumAmount = 0 $> 
     <$= transaction.payments.forEach(function(payment){
     sumAmount += payment.amount;
     }) $>
     <div class="pull-right">Remaining Balance Due: <$= transaction.amount - sumAmount $></div>
-    <br>
-    <br>
-
-    <table class="table">
+			<table class="table">
+				<tr>
+					<th>Date</th>
+					<th>Name</th>
+					<th>Description</th>
+					<th>Amount</th>
+					<th>Phone</th>
+				</tr>
         <tr>
-            <th>Date</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Amount</th>
-            <th>Phone</th>
+					<td><$= transaction.date $></td>
+					<td><$= transaction.name $></td>
+					<td><$= transaction.description $></td>
+					<td><$= transaction.amount $></td>
+					<td><$= transaction.phone $></td>
         </tr>
-
-        <tr>
-        <td><$= transaction.date $></td>
-        <td><$= transaction.name $></td>
-        <td><$= transaction.description $></td>
-        <td><$= transaction.amount $></td>
-        <td><$= transaction.phone $></td>
-        </tr>
-    </table>
-<br>
-<br>
-<br> 
-
-
-<form class="col-xs-4" action="/transactions/<$= transaction.id $>/payments" method="post">
-    <div class="form-group">
-        <label>Date:</label>
+			</table>
+			<h2 class="new-trans">Partial Payments</h2>
+				<form class="col-xs-4" action="/transactions/<$= transaction.id $>/payments" method="post">
+    			<div class="form-group">
+        		<label>Date:</label>
             <div class="input-group date" id="datetimepicker1">
-                <input type="text" class="form-control" name="date" />
-                <span class="input-group-addon">
-                <span class="glyphicon glyphicon-calendar"></span>
-                </span>
+							<input type="text" class="form-control" name="date" />
+								<span class="input-group-addon">
+									<span class="glyphicon glyphicon-calendar"></span>
+							</span>
             </div>
-    </div>
-    
-    <div class="form-group">
-        <label>Amount</label>
-        <input type="text" class="form-control" name="amount">
-    </div>
-        <input type="hidden" name="_method" value="put"/>
-        <button class="btn btn-default" type="submit" name="paymentId">Add Payment</button>
-        <div>
-            <br>
-        </div>
-</form>
-
-<table class="table">
-    <tr>
-      <th>Date</th>
-      <th>Amount Paid</th>
-      <th colspan="2"></th>
-    </tr>
-    <tr>  
-    <$ transaction.payments.forEach(function(payment){ $>
-        <td><$= payment.date $></td>
-        <td><$= payment.amount $></td>
-        <td><a class="btn btn-default" href="/transactions/<$= transaction.id $>/<$= payment.id $>/edit">Edit</a></td>
-
-
-    </tr> 
-    <$ }) $> 
-</table>
-
-    <script type="text/javascript">
-        $(function() {
-        $('#datetimepicker1').datetimepicker();
-        });
-    </script>
-
-<br>
-
+    			</div>
+    			<div class="form-group">
+        		<label>Amount</label>
+        		<input type="text" class="form-control" name="amount">
+    			</div>
+        		<input type="hidden" name="_method" value="put"/>
+        			<button class="btn btn-default" type="submit" name="paymentId">Add Payment</button>
+        	<div>
+          	<br>
+        	</div>
+				</form>
+				<table class="table">
+					<tr>
+						<th>Date</th>
+						<th>Amount Paid</th>
+						<th colspan="2"></th>
+					</tr>
+    			<tr>  
+    				<$ transaction.payments.forEach(function(payment){ $>
+							<td><$= payment.date $></td>
+							<td><$= payment.amount $></td>
+							<td><a class="btn btn-default" href="/transactions/<$= transaction.id $>/<$= payment.id $>/edit">Edit</a></td>
+					</tr> 
+    			<$ }) $> 
+				</table>
+    		<script type="text/javascript">
+        	$(function() {
+        		$('#datetimepicker1').datetimepicker();
+        	});
+    		</script>
+				<br>
 </div>
-
 <$- include('./../_partials/footer') $> 
