@@ -8,7 +8,9 @@ module.exports = {
   update: update,
   delete: del,
   show: show,
-  createPayment: createPayment
+  createPayment: createPayment,
+  editPayment: editPayment,
+  updatePayment: updatePayment
 };
 
 function newTransaction(req, res) {
@@ -28,9 +30,33 @@ function create(req, res) {
 
 function edit(req, res) {
   Transaction.findById(req.params.id, function(err, transaction) {
-    console.log(transaction);
     res.render('./transactions/edit', {transaction: transaction, user: req.user.id});
   });
+}
+
+function editPayment(req, res) {
+  Transaction.findById(req.params.id, function(err, transaction) {
+   transaction.payments.forEach(function(payment){
+     if(payment.id === req.params.paymentId){
+      res.render('./transactions/editpayment', {transaction: transaction, user: req.user.id, payment: payment});
+     }
+    });
+  });
+}
+
+function updatePayment(req, res) {
+  Transaction.findById(req.params.id, function(err, transaction) {
+    transaction.payments.forEach(function(payment){
+    console.log(req.body); 
+     if(payment.id === req.params.paymentId){
+      payment.date = req.body.date;
+      payment.amount = req.body.amount;
+    }
+    transaction.save(err => {
+      res.redirect(`/transactions/${transaction.id}`);
+    })
+    });
+  })
 }
 
 function update(req, res) {
@@ -47,7 +73,6 @@ function del(req, res) {
 
 function show(req, res) {
   Transaction.findById(req.params.id, function(err, transaction) {
-    console.log(transaction);
     res.render('./transactions/show', {transaction: transaction, user: req.user.id});
   });
 }
