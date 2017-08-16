@@ -45,16 +45,22 @@ function editPayment(req, res) {
 }
 
 function updatePayment(req, res) {
+  var sumAmountPaid = 0;
   Transaction.findById(req.params.id, function(err, transaction) {
     transaction.payments.forEach(function(payment){
-    console.log(req.body); 
-     if(payment.id === req.params.paymentId){
-      payment.date = req.body.date;
-      payment.amount = req.body.amount;
-    }
+      if(payment.id === req.params.paymentId){
+        if(req.body.date){
+          payment.date = new Date(req.body.date);
+        }
+        payment.amount = req.body.amount;
+      }
+      sumAmountPaid += payment.amount;
+    });
+    transaction.amountPaid = sumAmountPaid;
     transaction.save(err => {
+      // console.log("****Payment ", payment); 
+      console.log("****Req.body ", req.body);
       res.redirect(`/transactions/${transaction.id}`);
-    })
     });
   })
 }
