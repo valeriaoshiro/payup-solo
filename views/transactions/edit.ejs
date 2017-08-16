@@ -1,51 +1,48 @@
 <$- include('./../_partials/head') $>
-
-<h1>Edit Transaction</h1>
-
-    <form class="col-xs-4" action="/transactions/<$= transaction.id $>?_method=PUT" method="POST">
-    <button class="btn btn-default" type="button"><a href="/users">Back to All Transactions</a></button>
-    <br>
-    <br>
-        <div class="form-group">
-            <label>Date:</label>
-            <div class="input-group date" id="datetimepicker1">
-                <input type="text" class="form-control" name="date" value="<$= transaction.date $>" /><br>
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-calendar"></span>
-                </span>
-            </div>    
-        </div>
-
-       <div class="form-group">     
-        <label>Name</label>
-        <input type="text" name="name" class="form-control" value="<$= transaction.name $>">
-       </div> 
-
-       <div class="form-group"> 
-        <label>Description</label>
-        <input type="text" name="description" class="form-control" value="<$= transaction.description $>">
-       </div> 
-        
-       <div class="form-group">  
-        <label>Amount</label>
-        <input type="text" name="amount" class="form-control" value="<$= transaction.amount $>">
-       </div> 
-
-       <div class="form-group">
-        <label>Phone</label>
-        <input type="text" name="phone" class="form-control" value="<$= transaction.phone $>">
-       </div> 
-        
-        <input type="hidden" name="_method" value="put"/>
-        <button class="btn btn-default" type="submit" name="transactionId" value="<$= transaction.id $>">Update</button>
-
-       
-    </form>
-
-     <script type="text/javascript">
-    $(function() {
-      $('#datetimepicker1').datetimepicker();
-    });
-    </script>
-
+<div class="container"> 
+	<h2 class="new-trans">Edit Transaction</h2>
+		<form class="col-xs-12" action="/users" method="get">
+				<input class="new-trans btn btn-default" type="submit" value="Back to All Transactions"></input>
+		</form>
+		<form class="col-xs-4" action="/transactions/<$= transaction.id $>?_method=PUT" method="POST">   
+			<br>
+			<br>
+			<div class="form-group">
+				<label>Date:</label>
+				<div class="input-group date" id="datetimepicker1">
+					<input type="text" class="form-control" name="date" value="<$= transaction.date $>" /><br>
+						<span class="input-group-addon">
+							<span class="glyphicon glyphicon-calendar"></span>
+						</span>
+				</div>    
+			</div>
+			<div class="form-group">     
+				<label>Name</label>
+				<input type="text" name="name" class="form-control" value="<$= transaction.name $>">
+			</div> 
+			<div class="form-group"> 
+				<label>Description</label>
+				<input type="text" name="description" class="form-control" value="<$= transaction.description $>">
+			</div> 
+			<div class="form-group">  
+				<label>Amount</label>
+				<input type="text" name="amount" class="form-control" value="<$= transaction.amount $>">
+			</div> 
+			<div class="form-group">
+				<label>Phone</label>
+				<input type="text" name="phone" class="form-control" value="<$= transaction.phone $>">
+			</div> 
+			<input type="hidden" name="_method" value="put"/>
+				<button class="btn btn-default" type="submit" name="transactionId" value="<$= transaction.id $>">Update</button>
+		</form>
+		<br>
+		<br>
+		<br>
+	<script type="text/javascript">
+		$(function() {
+				$('#datetimepicker1').datetimepicker();
+		});
+	</script>
+	<br>
+</div>
 <$- include('./../_partials/footer') $>
