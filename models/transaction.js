@@ -23,4 +23,15 @@ var transactionSchema = new mongoose.Schema({
     timestamps: true
 });
 
+transactionSchema.set('toJSON', {
+    transform: function(doc, ret, options){
+        var retJson = {
+            description: ret.description,
+            amount: ret.amount,
+            amountPaid: ret.amountPaid
+        };
+        return retJson;
+    }
+});
+
 module.exports = mongoose.model('Transaction', transactionSchema);
