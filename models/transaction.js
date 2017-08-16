@@ -3,14 +3,14 @@ var Schema = mongoose.Schema;
 var ObjectId = Schema.Types.ObjectId;
 
 var paymentsSchema = new mongoose.Schema({
-    date: String,
+    date: Date,
     amount: Number    
 },{
     timestamps: true
 });
 
 var transactionSchema = new mongoose.Schema({
-    date: String,
+    date: Date,
     name: String,
     description: String,
     amount: Number,
@@ -21,6 +21,17 @@ var transactionSchema = new mongoose.Schema({
     payments: [paymentsSchema]
 }, {
     timestamps: true
+});
+
+transactionSchema.set('toJSON', {
+    transform: function(doc, ret, options){
+        var retJson = {
+            description: ret.description,
+            amount: ret.amount,
+            amountPaid: ret.amountPaid
+        };
+        return retJson;
+    }
 });
 
 module.exports = mongoose.model('Transaction', transactionSchema);

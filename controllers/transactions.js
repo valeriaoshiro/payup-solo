@@ -8,7 +8,9 @@ module.exports = {
   update: update,
   delete: del,
   show: show,
-  createPayment: createPayment
+  createPayment: createPayment,
+  editPayment: editPayment,
+  updatePayment: updatePayment
 };
 
 function newTransaction(req, res) {
@@ -17,8 +19,14 @@ function newTransaction(req, res) {
 
 function create(req, res) {
   User.findById(req.user.id, function(err, user) {
+    var newDate;
+    if(!req.body.date){
+      newDate = new Date();
+    } else {
+      newDate = new Date(req.body.date);
+    }
     var transaction = new Transaction (
-      {date: req.body.date, name: req.body.name, description: req.body.description, amount: Number(req.body.amount), phone: req.body.phone, user: user._id}
+      {date: newDate, name: req.body.name, description: req.body.description, amount: Number(req.body.amount), phone: req.body.phone, user: user._id}
     )
     transaction.save(function(err) {
       res.redirect(`/users`);
@@ -28,9 +36,39 @@ function create(req, res) {
 
 function edit(req, res) {
   Transaction.findById(req.params.id, function(err, transaction) {
-    console.log(transaction);
     res.render('./transactions/edit', {transaction: transaction, user: req.user.id});
   });
+}
+
+function editPayment(req, res) {
+  Transaction.findById(req.params.id, function(err, transaction) {
+   transaction.payments.forEach(function(payment){
+     if(payment.id === req.params.paymentId){
+      res.render('./transactions/editpayment', {transaction: transaction, user: req.user.id, payment: payment});
+     }
+    });
+  });
+}
+
+function updatePayment(req, res) {
+  var sumAmountPaid = 0;
+  Transaction.findById(req.params.id, function(err, transaction) {
+    transaction.payments.forEach(function(payment){
+      if(payment.id === req.params.paymentId){
+        if(req.body.date){
+          payment.date = new Date(req.body.date);
+        }
+        payment.amount = req.body.amount;
+      }
+      sumAmountPaid += payment.amount;
+    });
+    transaction.amountPaid = sumAmountPaid;
+    transaction.save(err => {
+      // console.log("****Payment ", payment); 
+      console.log("****Req.body ", req.body);
+      res.redirect(`/transactions/${transaction.id}`);
+    });
+  })
 }
 
 function update(req, res) {
@@ -47,7 +85,6 @@ function del(req, res) {
 
 function show(req, res) {
   Transaction.findById(req.params.id, function(err, transaction) {
-    console.log(transaction);
     res.render('./transactions/show', {transaction: transaction, user: req.user.id});
   });
 }
