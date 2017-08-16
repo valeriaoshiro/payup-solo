@@ -18,22 +18,21 @@ module.exports = {
 };
 
 function sendMessage(req, res) {
-  Transaction.findById(req.params.id).populate('users').exec((err, transaction) => {
+  Transaction.findById(req.params.id).populate('user').exec((err, transaction) => {
     var cleanPhone = transaction.phone.replace(/[^\d]*/gi, "");
-    // client.messages.create({
-    //   from: '+13238706472',
-    //   to: '+1' + cleanPhone,
-    //   body: 'This is a friendly reminder: YOU OWE MONIES TO ' + transaction.user.name,
-    //   mediaUrl: 'https://media.giphy.com/media/MbIYMkQhIGMc8/giphy.gif'
-    // }, function(err, message) {
-    //   if(err) {
-    //     console.error(err);
-    //   } else {
-    //     console.log(message.sid);
-    //     res.redirect(`/users`)
-    //   }
-    // }); 
-    console.log(transaction.user);
+    client.messages.create({
+      from: '+13238706472',
+      to: '+1' + cleanPhone,
+      body: 'This is a friendly reminder: You owe ' + transaction.user.name + ' $' + (transaction.amount - transaction.amountPaid),
+      mediaUrl: 'https://media.giphy.com/media/MbIYMkQhIGMc8/giphy.gif'
+    }, function(err, message) {
+      if(err) {
+        console.error(err);
+      } else {
+        console.log(message.sid);
+        res.redirect(`/users`)
+      }
+    }); 
   });
 }
 
@@ -114,7 +113,7 @@ function show(req, res) {
 }
 
 function createPayment(req, res) {
-  Transaction.findById(req.params.id).populate('users').exec((err, transaction) => {
+  Transaction.findById(req.params.id).populate('user').exec((err, transaction) => {
     transaction.payments.push({date: req.body.date, amount: req.body.amount});
     transaction.amountPaid += Number(req.body.amount);
     transaction.save(err => {
