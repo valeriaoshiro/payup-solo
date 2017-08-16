@@ -54,18 +54,6 @@ app.use('/users', users);
 app.use('/transactions', transactions);
 app.use('/api', api)
 
-client.messages.create({
-  from: '+13238706472',
-  to: '+16263212960',
-  body: 'This is a test text message from Twilio.'
-}, function(err, message) {
-  if(err) {
-      console.error(err);
-  } else {
-    console.log(message.sid);
-  }
-});
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
