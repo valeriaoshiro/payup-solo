@@ -64,11 +64,15 @@
     <tr>
       <th>Date</th>
       <th>Amount Paid</th>
+      <th colspan="2"></th>
     </tr>
     <tr>  
     <$ transaction.payments.forEach(function(payment){ $>
         <td><$= payment.date $></td>
         <td><$= payment.amount $></td>
+        <td><a class="btn btn-default" href="/transactions/<$= transaction.id $>/<$= payment.id $>/edit">Edit</a></td>
+
+
     </tr> 
     <$ }) $> 
 </table>
