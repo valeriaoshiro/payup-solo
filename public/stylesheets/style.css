@@ -9,7 +9,7 @@ h1 {
 
 h2, h3 {
   font-family: 'Yantramanav', sans-serif;
-  font-weight: 400;
+  font-weight: 300;
   padding: 30px;
   text-align: center;
 }
@@ -101,4 +101,12 @@ img.homepage {
   margin-left: 20px;
 } */
 
+.footer-fix {
+  display: flex;
+  min-height: calc(100vh - 145px);
+  flex-direction: column;
+}
 
+.footer-fix-content {
+  flex: 1;
+}

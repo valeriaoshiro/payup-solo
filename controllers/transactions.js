@@ -23,7 +23,7 @@ function sendMessage(req, res) {
     client.messages.create({
       from: '+13238706472',
       to: '+1' + cleanPhone,
-      body: 'This is a friendly reminder: You owe ' + transaction.user.name + ' $' + (transaction.amount - transaction.amountPaid),
+      body: 'This is a friendly reminder: You owe ' + transaction.user.name + ' $' + (transaction.amount - transaction.amountPaid) + ' for ' + transaction.description,
       mediaUrl: 'https://media.giphy.com/media/MbIYMkQhIGMc8/giphy.gif'
     }, function(err, message) {
         if(err) {
