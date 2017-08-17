@@ -1,7 +1,9 @@
 # **PayUp**
 Keep track of who owes you money and send them friendly reminders through SMS
-.
-Screenshot 
+
+<center>Screenshot Placeholder #1</center>
+
+<center><img src="https://i.imgur.com/reMefwt.png" title="payup SMS screenshot"/></center>
 
 # **Technologies Used**
 HTML, CSS, JavaScript, jQuery, BootStrap

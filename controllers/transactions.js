@@ -1,7 +1,11 @@
 var Transaction = require('../models/transaction');
 var User = require('../models/user');
+var accountSid = process.env.TWILIO_ACCOUNT_SID;
+var authToken = process.env.TWILIO_AUTH_TOKEN;
+var client = require('twilio')(accountSid, authToken);
 
 module.exports = {
+  sendMessage: sendMessage,
   create: create,
   new: newTransaction,
   edit: edit,
@@ -13,14 +17,39 @@ module.exports = {
   updatePayment: updatePayment
 };
 
+function sendMessage(req, res) {
+  Transaction.findById(req.params.id).populate('user').exec((err, transaction) => {
+    var cleanPhone = transaction.phone.replace(/[^\d]*/gi, "");
+    client.messages.create({
+      from: '+13238706472',
+      to: '+1' + cleanPhone,
+      body: 'This is a friendly reminder: You owe ' + transaction.user.name + ' $' + (transaction.amount - transaction.amountPaid),
+      mediaUrl: 'https://media.giphy.com/media/MbIYMkQhIGMc8/giphy.gif'
+    }, function(err, message) {
+      if(err) {
+        console.error(err);
+      } else {
+        console.log(message.sid);
+        res.redirect(`/users`)
+      }
+    }); 
+  });
+}
+
 function newTransaction(req, res) {
   res.render('./transactions/new', {transaction: {}, user: req.user.id});
 }
 
 function create(req, res) {
   User.findById(req.user.id, function(err, user) {
+    var newDate;
+    if(!req.body.date){
+      newDate = new Date();
+    } else {
+      newDate = new Date(req.body.date);
+    }
     var transaction = new Transaction (
-      {date: req.body.date, name: req.body.name, description: req.body.description, amount: Number(req.body.amount), phone: req.body.phone, user: user._id}
+      {date: newDate, name: req.body.name, description: req.body.description, amount: Number(req.body.amount), phone: req.body.phone, user: user._id}
     )
     transaction.save(function(err) {
       res.redirect(`/users`);
@@ -84,7 +113,7 @@ function show(req, res) {
 }
 
 function createPayment(req, res) {
-  Transaction.findById(req.params.id).populate('users').exec((err, transaction) => {
+  Transaction.findById(req.params.id).populate('user').exec((err, transaction) => {
     transaction.payments.push({date: req.body.date, amount: req.body.amount});
     transaction.amountPaid += Number(req.body.amount);
     transaction.save(err => {
