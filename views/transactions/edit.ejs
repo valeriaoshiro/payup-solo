@@ -35,14 +35,21 @@
 			<input type="hidden" name="_method" value="put"/>
 				<button class="btn btn-default" type="submit" name="transactionId" value="<$= transaction.id $>">Update</button>
 		</form>
-			<br>
-			<br>
-			<br>
+		<br>
+		<br>
+		<br>
 		<script type="text/javascript">
 			$(function() {
-				$('#datetimepicker1').datetimepicker();
+					$('#datetimepicker1').datetimepicker({
+						format: 'L'
+					});
 			});
 		</script>
-			<br>
+		<br>
 </div>
+<br>	
+<br>	
+<br>	
+	
+
 <$- include('./../_partials/footer') $>

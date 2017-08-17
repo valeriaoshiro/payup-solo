@@ -31,11 +31,14 @@
           <li><a class="navlinks" href="/">Home</a></li>
           <li><a class="navlinks" href="/about">About</a></li>
           <li><a class="navlinks" href="/contact">Contact</a></li>
-            <$ if (user) { $>
-              <li><a class="navlinks" href="/logout">Sign Out</a></li>
-            <$ } else { $>
-              <li><a class="navlinks" href="/auth/google">Sign In</a></li>
-            <$ } $>
+          <$ if(user){ $>
+            <li><a class="navlinks" href="/users">Transactions</a></li>
+          <$ } $>  
+          <$ if (user) { $>
+            <li><a class="navlinks" href="/logout">Sign Out</a></li>
+          <$ } else { $>
+            <li><a class="navlinks" href="/auth/google">Sign In</a></li>
+          <$ } $>
         </ul>
       </div>
 
