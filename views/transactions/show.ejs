@@ -54,7 +54,7 @@
 						</tr>
 						<tr>  
 							<$ transaction.payments.forEach(function(payment){ $>
-								<td><$= payment.date.getMonth() $>/<$= payment.date.getDate() $>/<$= payment.date.getFullYear() $></td>
+								<td><$= payment.date.getMonth() + 1 $>/<$= payment.date.getDate() $>/<$= payment.date.getFullYear() $></td>
 								<td>$<$= (payment.amount).toFixed(2) $></td>
 								<td><a class="btn btn-default" href="/transactions/<$= transaction.id $>/<$= payment.id $>/edit">Edit</a></td>
 						</tr> 
