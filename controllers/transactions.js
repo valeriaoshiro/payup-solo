@@ -28,9 +28,10 @@ function sendMessage(req, res) {
     }, function(err, message) {
         if(err) {
           console.error(err);
+          res.json({success:false}).status(200);
         } else {
           console.log(message.sid);
-          res.redirect(`/users`);
+          res.json({success:true}).status(200);
       }
     }); 
   });
