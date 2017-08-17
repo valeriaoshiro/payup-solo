@@ -14,12 +14,12 @@ var userSchema = new mongoose.Schema({
 });
 
 userSchema.set('toJSON', {
-    transform: function(doc, ret, options){
-        var retJson = {
-            name: ret.name
-        };
-        return retJson;
-    }
+	transform: function(doc, ret, options){
+		var retJson = {
+				name: ret.name
+		};
+		return retJson;
+	}
 });
 
 module.exports = mongoose.model('User', userSchema);
