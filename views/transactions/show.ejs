@@ -18,7 +18,7 @@
 					<th>Phone</th>
 				</tr>
         <tr>
-					<td><$= transaction.date $></td>
+					<td><$= transaction.date.getMonth() $>/<$= transaction.date.getDate() $>/<$= transaction.date.getFullYear() $></td>
 					<td><$= transaction.name $></td>
 					<td><$= transaction.description $></td>
 					<td><$= transaction.amount $></td>
@@ -54,7 +54,7 @@
 					</tr>
     			<tr>  
     				<$ transaction.payments.forEach(function(payment){ $>
-							<td><$= payment.date $></td>
+							<td><$= payment.date.getMonth() $>/<$= payment.date.getDate() $>/<$= payment.date.getFullYear() $></td>
 							<td><$= payment.amount $></td>
 							<td><a class="btn btn-default" href="/transactions/<$= transaction.id $>/<$= payment.id $>/edit">Edit</a></td>
 					</tr> 
@@ -62,7 +62,9 @@
 				</table>
     		<script type="text/javascript">
         	$(function() {
-        		$('#datetimepicker1').datetimepicker();
+        		$('#datetimepicker1').datetimepicker({
+					format: 'L'
+				});
         	});
     		</script>
 				<br>
