@@ -18,7 +18,7 @@
 						<th>Phone</th>
 					</tr>
 					<tr>
-						<td><$= transaction.date.getMonth() $>/<$= transaction.date.getDate() $>/<$= transaction.date.getFullYear() $></td>
+						<td><$= transaction.date.getMonth() + 1 $>/<$= transaction.date.getDate() $>/<$= transaction.date.getFullYear() $></td>
 						<td><$= transaction.name $></td>
 						<td><$= transaction.description $></td>
 						<td>$<$= (transaction.amount).toFixed(2) $></td>
