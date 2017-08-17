@@ -26,11 +26,11 @@ function sendMessage(req, res) {
       body: 'This is a friendly reminder: You owe ' + transaction.user.name + ' $' + (transaction.amount - transaction.amountPaid),
       mediaUrl: 'https://media.giphy.com/media/MbIYMkQhIGMc8/giphy.gif'
     }, function(err, message) {
-      if(err) {
-        console.error(err);
-      } else {
-        console.log(message.sid);
-        res.redirect(`/users`)
+        if(err) {
+          console.error(err);
+        } else {
+          console.log(message.sid);
+          res.redirect(`/users`)
       }
     }); 
   });
@@ -43,11 +43,11 @@ function newTransaction(req, res) {
 function create(req, res) {
   User.findById(req.user.id, function(err, user) {
     var newDate;
-    if(!req.body.date){
-      newDate = new Date();
-    } else {
-      newDate = new Date(req.body.date);
-    }
+      if(!req.body.date){
+        newDate = new Date();
+      } else {
+        newDate = new Date(req.body.date);
+      }
     var transaction = new Transaction (
       {date: newDate, name: req.body.name, description: req.body.description, amount: Number(req.body.amount), phone: req.body.phone, user: user._id}
     )
@@ -81,9 +81,9 @@ function updatePayment(req, res) {
         if(req.body.date){
           payment.date = new Date(req.body.date);
         }
-        payment.amount = req.body.amount;
-      }
-      sumAmountPaid += payment.amount;
+          payment.amount = req.body.amount;
+        }
+          sumAmountPaid += payment.amount;
     });
     transaction.amountPaid = sumAmountPaid;
     transaction.save(err => {
