@@ -30,6 +30,7 @@ function sendMessage(req, res) {
           console.error(err);
         } else {
           console.log(message.sid);
+          swal('Success!', 'Your SMS message was sent', 'success');
           res.redirect(`/users`)
       }
     }); 
