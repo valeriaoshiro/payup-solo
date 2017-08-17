@@ -1,73 +1,58 @@
 <$- include('./../_partials/head') $>
-<br>
-<br>
-<br>
-<br>
-
-<div class="container">
-
-<div>
-  <$ if (userDetail.avatar) { $>
-    <img src="<$= userDetail.avatar $>" alt="" class="img-circle responsive-img">
-  <$ } else { $>
-    <i class="small material-icons">perm_identity</i>
-    <$ } $>
-</div>
-
-<br>
-
-<$= userDetail.name $><br>
-<$= userDetail.email $><br>
-<$ var sumAmount = 0 $> 
-<$ var sumAmountPaid = 0 $>
-<$= transactions.forEach(function(transaction){
-  sumAmount += transaction.amount;
-  sumAmountPaid += transaction.amountPaid;
-})$>
-<div class="pull-right">Total Balance: $<$= (sumAmount-sumAmountPaid).toFixed(2) $></div>
-<br>
-<br>
-
-<table class="table">
-  <tr>
-    <th>Date</th>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Amount</th>
-    <th>Amount Paid</th>
-    <th>Phone</th>
-    <th colspan="4"></th>
-  </tr>
-  <tr>
-  <$ transactions.forEach(function(transaction){ $>
-    <td><$= transaction.date.getMonth() $>/<$= transaction.date.getDate() $>/<$= transaction.date.getFullYear() $></td>
-    <td><$= transaction.name $></td>
-    <td><$= transaction.description $></td>
-    <td>$<$= (transaction.amount).toFixed(2) $></td>
-    <td>$<$= (transaction.amountPaid).toFixed(2) $></td>   
-    <td><$= transaction.phone $></td>
-    <td><a class="btn btn-default" href="/transactions/<$= transaction.id $>">View</a></td>
-    <td><a class="btn btn-default" href="/transactions/<$= transaction.id $>/edit">Edit</a></td> 
-
-    <form method="POST" action="/transactions/<$= transaction.id $>?_method=DELETE">
-      <input type="hidden" name="_method" value="delete"/>
-      <td><input class="btn btn-default" type="submit" name="transactionId" value="Delete"></td>
-    </form>
-    <form method="GET" action="/transactions/sms/<$= transaction.id $>">
-      <td><input class="btn btn-default" type="submit" value="Send SMS"></td>
-    </form>
-  </tr>
-  <$ }) $> 
-
-</table>   
-
-  <a class="add-trans btn btn-default" href="/transactions/new">Add Transaction</a>
-      
-<br>
-<br>
-<br>
-
-</div>
-
-<!--<$= userDetail.transactions $>-->
+  <div class="container">
+    <h2 class="new-trans">My Transactions</h2>
+      <div>
+        <$ if (userDetail.avatar) { $>
+          <img src="<$= userDetail.avatar $>" alt="" class="img-circle responsive-img">
+        <$ } else { $>
+          <i class="small material-icons">perm_identity</i>
+          <$ } $>
+      </div>
+      <br>
+        <$= userDetail.name $><br>
+        <$= userDetail.email $><br>
+        <$ var sumAmount = 0 $> 
+        <$ var sumAmountPaid = 0 $>
+        <$= transactions.forEach(function(transaction){
+          sumAmount += transaction.amount;
+          sumAmountPaid += transaction.amountPaid;
+        })$>
+        <div class="pull-right">Total Balance: $<$= (sumAmount-sumAmountPaid).toFixed(2) $></div>
+        <br>
+        <br>
+        <table class="table">
+          <tr>
+            <th>Date</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Amount Paid</th>
+            <th>Phone</th>
+            <th colspan="4"></th>
+          </tr>
+            <$ transactions.forEach(function(transaction){ $>
+              <tr>
+                <td><$= transaction.date.getMonth() $>/<$= transaction.date.getDate() $>/<$= transaction.date.getFullYear() $></td>
+                <td><$= transaction.name $></td>
+                <td><$= transaction.description $></td>
+                <td>$<$= (transaction.amount).toFixed(2) $></td>
+                <td>$<$= (transaction.amountPaid).toFixed(2) $></td>   
+                <td><$= transaction.phone $></td>
+                <td><a class="btn btn-default" href="/transactions/<$= transaction.id $>">View</a></td>
+                <td><a class="btn btn-default" href="/transactions/<$= transaction.id $>/edit">Edit</a></td> 
+                <form method="POST" action="/transactions/<$= transaction.id $>?_method=DELETE">
+                  <input type="hidden" name="_method" value="delete"/>
+                  <td><input class="btn btn-default" type="submit" name="transactionId" value="Delete"></td>
+                </form>
+                <form method="GET" action="/transactions/sms/<$= transaction.id $>">
+                  <td><input class="btn btn-default" type="submit" value="Send SMS"></td>
+                </form>
+            </tr>
+          <$ }) $> 
+        </table>
+        <a class="add-trans btn btn-default" href="/transactions/new">Add Transaction</a>
+        <br>
+        <br>
+        <br>
+  </div>
 <$- include('./../_partials/footer') $>
