@@ -24,7 +24,7 @@
   sumAmount += transaction.amount;
   sumAmountPaid += transaction.amountPaid;
 })$>
-<div class="pull-right">Total Balance: <$= sumAmount-sumAmountPaid $></div>
+<div class="pull-right">Total Balance: $<$= (sumAmount-sumAmountPaid).toFixed(2) $></div>
 <br>
 <br>
 
@@ -43,8 +43,8 @@
     <td><$= transaction.date.getMonth() $>/<$= transaction.date.getDate() $>/<$= transaction.date.getFullYear() $></td>
     <td><$= transaction.name $></td>
     <td><$= transaction.description $></td>
-    <td><$= transaction.amount $></td>
-    <td><$= transaction.amountPaid $></td>   
+    <td>$<$= (transaction.amount).toFixed(2) $></td>
+    <td>$<$= (transaction.amountPaid).toFixed(2) $></td>   
     <td><$= transaction.phone $></td>
     <td><a class="btn btn-default" href="/transactions/<$= transaction.id $>">View</a></td>
     <td><a class="btn btn-default" href="/transactions/<$= transaction.id $>/edit">Edit</a></td> 

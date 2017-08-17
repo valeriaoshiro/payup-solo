@@ -8,7 +8,7 @@
     <$= transaction.payments.forEach(function(payment){
     sumAmount += payment.amount;
     }) $>
-    <div class="pull-right">Remaining Balance Due: <$= transaction.amount - sumAmount $></div>
+    <div class="pull-right">Remaining Balance Due: $<$= (transaction.amount - sumAmount).toFixed(2) $></div>
 			<table class="table">
 				<tr>
 					<th>Date</th>
@@ -21,7 +21,7 @@
 					<td><$= transaction.date.getMonth() $>/<$= transaction.date.getDate() $>/<$= transaction.date.getFullYear() $></td>
 					<td><$= transaction.name $></td>
 					<td><$= transaction.description $></td>
-					<td><$= transaction.amount $></td>
+					<td>$<$= (transaction.amount).toFixed(2) $></td>
 					<td><$= transaction.phone $></td>
         </tr>
 			</table>
@@ -55,7 +55,7 @@
     			<tr>  
     				<$ transaction.payments.forEach(function(payment){ $>
 							<td><$= payment.date.getMonth() $>/<$= payment.date.getDate() $>/<$= payment.date.getFullYear() $></td>
-							<td><$= payment.amount $></td>
+							<td>$<$= (payment.amount).toFixed(2) $></td>
 							<td><a class="btn btn-default" href="/transactions/<$= transaction.id $>/<$= payment.id $>/edit">Edit</a></td>
 					</tr> 
     			<$ }) $> 
