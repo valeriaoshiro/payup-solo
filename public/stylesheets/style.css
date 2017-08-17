@@ -2,22 +2,22 @@
 h1 {
   padding: 30px;
   text-align: center;
-  font-size: 40px;
-  font-family: 'Exo', sans-serif;
+  font-family: 'Yantramanav', sans-serif;
+  font-weight: 500;
   line-height: 130%;
 }
 
 h2, h3 {
-  font-family: 'Exo', sans-serif;
+  font-family: 'Yantramanav', sans-serif;
+  font-weight: 400;
   padding: 30px;
   text-align: center;
-  font-size: 45px;
 }
 
-h4 {
+h4, p {
   text-align: center;
-  font-family: 'Exo', sans-serif;
-  color: green;
+  font-family: 'Yantramanav', sans-serif;
+  font-weight: 300;
 }
 
 /*.navbar-header{
@@ -37,7 +37,7 @@ h4 {
   right: 45px;*/
   text-align: right;
   font-size: 20px;
-  font-family: 'Exo', sans-serif;
+  font-family: 'Yantramanav', sans-serif;
   text-decoration: none;
 }
 
