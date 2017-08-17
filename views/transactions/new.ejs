@@ -1,48 +1,48 @@
 <$- include('./../_partials/head') $>
-<div class="container">  
-  <h2 class="new-trans">New Transaction</h2>
-      <form class="col-xs-12" action="/users" method="get">
-        <input class="new-trans btn btn-default" type="submit" value="Back to All Transactions"></input>
-      </form>
-      <form class="col-xs-4" action="/transactions" method="post">    
-        <br>
-        <div class="form-group">
-          <label>Date:</label>
-            <div class="input-group date" id="datetimepicker1">
-              <input type="text" class="form-control" name="date" />
-                <span class="input-group-addon">
-                  <span class="glyphicon glyphicon-calendar"></span>
-                </span>
-            </div>
-        </div> 
-        <div class="form-group"> 
-          <label>Name:</label>
+  <div class="container">  
+    <h2 class="new-trans">New Transaction</h2>
+        <form class="col-xs-12" action="/users" method="get">
+          <input class="new-trans btn btn-default" type="submit" value="Back to All Transactions"></input>
+        </form>
+        <form class="col-xs-4" action="/transactions" method="post">    
+          <br>
+          <div class="form-group">
+            <label>Date:</label>
+              <div class="input-group date" id="datetimepicker1">
+                <input type="text" class="form-control" name="date" />
+                  <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+          </div> 
+          <div class="form-group"> 
+            <label>Name:</label>
             <input type="text" name="name" class="form-control">
-        </div>
-        <div class="form-group">
-          <label>Description:</label>
+          </div>
+          <div class="form-group">
+            <label>Description:</label>
             <input type="text" name="description" class="form-control">
-        </div>
-        <div class="form-group">
-          <label>Amount:</label>
+          </div>
+          <div class="form-group">
+            <label>Amount:</label>
             <input type="text" name="amount" class="form-control">
-        </div>
-        <div class="form-group">
-          <label>Phone:</label>
+          </div>
+          <div class="form-group">
+            <label>Phone:</label>
             <input type="text" name="phone" class="form-control">
-        </div>
-        <input class="new-trans btn btn-default" type="submit" value="Add Transaction">
-      </form>
-      <br>
-      <br>
-      <br>
-      <script type="text/javascript">
-        $(function() {
-          $('#datetimepicker1').datetimepicker({
-            format: 'L'
+          </div>
+          <input class="new-trans btn btn-default" type="submit" value="Add Transaction">
+        </form>
+        <br>
+        <br>
+        <br>
+        <script type="text/javascript">
+          $(function() {
+            $('#datetimepicker1').datetimepicker({
+              format: 'L'
+            });
           });
-        });
-      </script>
-      <br>
-</div>
+        </script>
+        <br>
+  </div>
 <$- include('./../_partials/footer') $>
