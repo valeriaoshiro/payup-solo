@@ -30,7 +30,7 @@ function sendMessage(req, res) {
           console.error(err);
         } else {
           console.log(message.sid);
-          res.redirect(`/users`)
+          res.redirect(`/users`);
       }
     }); 
   });
