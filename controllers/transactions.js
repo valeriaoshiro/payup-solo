@@ -95,9 +95,18 @@ function updatePayment(req, res) {
 }
 
 function update(req, res) {
-  Transaction.findByIdAndUpdate(req.params.id, req.body, function(err, transaction) {
-    res.redirect(`/users`);
-  });
+  if(!req.body.date){
+    Transaction.findById(req.params.id, function(err, transaction){
+      req.body.date = transaction.date;
+      Transaction.findByIdAndUpdate(req.params.id, req.body, function(err, transaction) {
+        res.redirect(`/users`);
+      });
+    });
+  } else {
+    Transaction.findByIdAndUpdate(req.params.id, req.body, function(err, transaction) {
+      res.redirect(`/users`);
+    });
+  }
 }
 
 function del(req, res) {
