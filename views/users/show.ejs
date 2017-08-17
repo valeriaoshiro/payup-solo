@@ -44,10 +44,20 @@
                   <input type="hidden" name="_method" value="delete"/>
                   <td><input class="btn btn-default" type="submit" name="transactionId" value="Delete"></td>
                 </form>
-                <form method="GET" action="/transactions/sms/<$= transaction.id $>">
-                  <td><input class="btn btn-default" type="submit" value="Send SMS"></td>
-                </form>
-            </tr>
+                <td><button id="sms-button" class="btn btn-default sms-button">Send SMS</button></td>
+                  <script>
+                    $('.sms-button').unbind('click').bind('click', function() {
+                      fetch('/transactions/sms/<$= transaction.id $>', {method: "GET"}).then(res => res.json())
+                      .then(function(data) {
+                        if (data.success) {
+                          alert('Your SMS has been sent!');
+                        } else {
+                          alert('Your SMS has not been sent. Please try again.');
+                        }
+                      })
+                    })
+                  </script>
+              </tr>
           <$ }) $> 
         </table>
         <a class="add-trans btn btn-default" href="/transactions/new">Add Transaction</a>
