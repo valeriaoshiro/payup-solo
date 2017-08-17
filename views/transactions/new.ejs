@@ -1,9 +1,12 @@
 <$- include('./../_partials/head') $>
-  <div class="container">  
+  <div class="container footer-fix">
+    <div class="footer-fix-content">  
     <h2 class="new-trans">New Transaction</h2>
         <form class="col-xs-12" action="/users" method="get">
           <input class="new-trans btn btn-default" type="submit" value="Back to All Transactions"></input>
         </form>
+        <br>
+        <br>
         <form class="col-xs-4" action="/transactions" method="post">    
           <br>
           <div class="form-group">
@@ -43,6 +46,7 @@
             });
           });
         </script>
-        <br>
+    </div>
   </div>
+  <br>
 <$- include('./../_partials/footer') $>

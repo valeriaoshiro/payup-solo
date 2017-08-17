@@ -1,5 +1,6 @@
 <$- include('./../_partials/head') $>
-  <div class="container">
+  <div class="container footer-fix">
+    <div class="footer-fix-content">  
     <h2 class="new-trans">My Transactions</h2>
       <div>
         <$ if (userDetail.avatar) { $>
@@ -30,7 +31,12 @@
             <th>Phone</th>
             <th colspan="4"></th>
           </tr>
-            <$ transactions.forEach(function(transaction){ $>
+            <$ transactions.forEach(function(transaction, index){ $>
+              <script>
+                    if (transaction.amount === transaction.amountPaid) {
+                      $("tr:nth-child(index)").addClass("gray-background");
+                    }
+              </script>                
               <tr>
                 <td><$= transaction.date.getMonth() + 1 $>/<$= transaction.date.getDate() $>/<$= transaction.date.getFullYear() $></td>
                 <td><$= transaction.name $></td>
@@ -64,5 +70,6 @@
         <br>
         <br>
         <br>
+    </div>
   </div>
 <$- include('./../_partials/footer') $>

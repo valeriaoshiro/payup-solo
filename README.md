@@ -5,9 +5,9 @@ Keep track of who owes you money and send them friendly reminders through SMS
 A typical scenario: I let you borrow money → You don’t pay me back → I use PayUp to log who owes me money → I send a friendly SMS text reminding you to pay me back → My money is finally received!
 <br/>
 
-<center><img src="https://i.imgur.com/9AbG823.png" title="payup transaction screenshot"/></center>
+<div style="text-align:center"><img src="https://i.imgur.com/9AbG823.png" title="payup transaction screenshot"/></div>
 <br/>
-<center><img src="https://i.imgur.com/reMefwt.png" title="payup SMS screenshot"/></center>
+<div style="text-align:center"><img src="https://i.imgur.com/reMefwt.png" title="payup SMS screenshot"/></div>
 <br/>
 
 # **Technologies Used**
@@ -43,11 +43,13 @@ Unsolved problems and/or planned features:
 <br/>
 Icebox:
 <br/>
-Different sorting filter options
+* Different sorting filter options
 <br/>
-Scheduled SMS messages
+* Scheduled SMS messages
 <br/>
-Different GIF/Meme options
+* Different GIF/Meme options
 <br/>
-Date Picker hover/highlighter
-
+* Date Picker hover/highlighter
+<br/>
+* Grayed out transaction line when amount is paid in full
+<br/>
