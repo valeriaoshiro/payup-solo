@@ -101,4 +101,12 @@ img.homepage {
   margin-left: 20px;
 } */
 
+.footer-fix {
+  display: flex;
+  min-height: calc(100vh - 145px);
+  flex-direction: column;
+}
 
+.footer-fix-content {
+  flex: 1;
+}
