@@ -20,11 +20,6 @@ h4, p {
   font-weight: 300;
 }
 
-/*.navbar-header{
-  height: 50px;
-  background-color: black;
-}*/
-
 .icon-bar {
   background: black;
 }
@@ -55,12 +50,6 @@ nav {
   background-color: #E2F8FF;
 }
 
-/*img {
-  position: relative;
-  top: -3px;
-  left: 10px;
-}*/
-
 .logo {
   /*position: relative;*/
   /*left: 12px;*/
@@ -73,10 +62,6 @@ footer {
   background-color: lightgrey;
   
 }
-
-/*.container-fluid {
-  color: black;
-}*/
 
 img.homepage {
   height: 500px;
@@ -96,10 +81,6 @@ img.homepage {
   top: -20px;
   left: 330px;
 }
-
-/*.add-trans {
-  margin-left: 20px;
-} */
 
 .footer-fix {
   display: flex;
