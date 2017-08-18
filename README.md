@@ -44,10 +44,10 @@ Unsolved problems and/or planned features:
 Icebox:
 <br/>
 * Different sorting filter options
-<br/>
+
 * Scheduled SMS messages
-<br/>
+
 * Different GIF/Meme options
-<br/>
+
 * Date Picker hover/highlighter
-<br/>
+
