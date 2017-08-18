@@ -49,19 +49,7 @@
                   <input type="hidden" name="_method" value="delete"/>
                   <td><input class="btn btn-default" type="submit" name="transactionId" value="Delete"></td>
                 </form>
-                <td><button id="sms-button" class="btn btn-default sms-button">Send SMS</button></td>
-                  <script>
-                    $('.sms-button').unbind('click').bind('click', function() {
-                      fetch('/transactions/sms/<$= transaction.id $>', {method: "GET"}).then(res => res.json())
-                      .then(function(data) {
-                        if (data.success) {
-                          alert('Your SMS has been sent!');
-                        } else {
-                          alert('Your SMS has not been sent. Please try again.');
-                        }
-                      })
-                    })
-                  </script>
+                <td><button id='<$= transaction.id $>' class="btn btn-default sms-button">Send SMS</button></td>
               </tr>
           <$ }) $> 
         </table>
@@ -71,4 +59,19 @@
         <br>
     </div>
   </div>
+  <script>
+    $('.sms-button').on('click', function(event) { 
+      console.log('button was clicked');
+      console.log(event.target.id);
+      var id = event.target.id;
+      fetch('/transactions/sms/' + id, {method: "GET"}).then(res => res.json())
+      .then(function(data) {
+        if (data.success) {
+          alert('Your SMS has been sent!');
+        } else {
+          alert('Your SMS has not been sent. Please try again.');
+        }
+      })
+    })
+  </script>
 <$- include('./../_partials/footer') $>
