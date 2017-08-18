@@ -51,3 +51,10 @@ Icebox:
 
 * Date Picker hover/highlighter
 
+# **Team**
+Kelso Cisneros' [GitHub](https://www.github.com/kelso333)
+<br/>
+Loretta Wang's [GitHub](https://www.github.com/lorettawang)
+<br/>
+Valera Oshiro's [GitHub](https://www.github.com/valeriaoshiro)
+
