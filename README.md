@@ -51,5 +51,3 @@ Icebox:
 <br/>
 * Date Picker hover/highlighter
 <br/>
-* Grayed out transaction line when amount is paid in full
-<br/>
