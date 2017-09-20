@@ -35,6 +35,7 @@ Click here to view our [Pitch Deck](https://docs.google.com/presentation/d/1oZ-5
 Click here to view our [Trello Board](https://trello.com/b/UHOjDafX/project-3-payup)
 <br/>
 Click here to view my [PayUp App](https://payup-solo.herokuapp.com/)
+<br>
 Click here to view [the original project's GitHub](https://github.com/valeriaoshiro/payup)
 <br/>
 
