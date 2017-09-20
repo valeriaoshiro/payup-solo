@@ -21,7 +21,7 @@ function sendMessage(req, res) {
   Transaction.findById(req.params.id).populate('user').exec((err, transaction) => {
     var cleanPhone = transaction.phone.replace(/[^\d]*/gi, "");
     client.messages.create({
-      from: '+13238706472',
+      from: process.env.TWILIO_PHONE_NUMBER,
       to: '+1' + cleanPhone,
       body: 'This is a friendly reminder: You owe ' + transaction.user.name + ' $' + (transaction.amount - transaction.amountPaid) + ' for ' + transaction.description,
       mediaUrl: 'https://media.giphy.com/media/MbIYMkQhIGMc8/giphy.gif'
