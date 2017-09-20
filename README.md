@@ -34,7 +34,8 @@ Click here to view our [Pitch Deck](https://docs.google.com/presentation/d/1oZ-5
 <br/>
 Click here to view our [Trello Board](https://trello.com/b/UHOjDafX/project-3-payup)
 <br/>
-Click here to view our [PayUp App](https://payup-49.herokuapp.com)
+Click here to view my [PayUp App](https://payup-solo.herokuapp.com/)
+Click here to view [the original project's GitHub](https://github.com/valeriaoshiro/payup)
 <br/>
 
 # **Next Steps**
@@ -56,5 +57,5 @@ Kelso Cisneros' [GitHub](https://www.github.com/kelso333)
 <br/>
 Loretta Wang's [GitHub](https://www.github.com/lorettawang)
 <br/>
-Valera Oshiro's [GitHub](https://www.github.com/valeriaoshiro)
+Valeria Oshiro's [GitHub](https://www.github.com/valeriaoshiro)
 
